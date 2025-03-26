@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <configuration.hpp>
-#include <events.hpp>
 
 int main()
 {
