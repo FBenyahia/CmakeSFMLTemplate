@@ -16,6 +16,7 @@ FetchContent_MakeAvailable(SFML)
 file(GLOB_RECURSE source_files
         "src/*.cpp"
 )
+
 set(SOURCES ${source_files})
 
 add_executable(${PROJECT_NAME} ${SOURCES})
