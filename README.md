@@ -4,7 +4,7 @@ Basic SFML Template using CMake (see documentation below)
 
 - [Cmake Documentation](https://cmake.org/cmake/help/latest/index.html)
 - [SFML documentation](https://www.sfml-dev.org/)
-
+---
 ## Compilation
 
 To compile, the following commands can be used
@@ -15,6 +15,7 @@ cmake ..
 cmake --build .
 ```
 ## Execute
+
 Executable is located in `/build/bin/project_name`
 
 
