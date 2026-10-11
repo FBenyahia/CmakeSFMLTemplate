@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }} - ${{ matrix.build_type }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        build_type: [Debug, Release]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cmake \
+            ninja-build \
+            libxrandr-dev \
+            libxcursor-dev \
+            libxi-dev \
+            libudev-dev \
+            libfreetype-dev \
+            libharfbuzz-dev \
+            libgl1-mesa-dev \
+            libegl1-mesa-dev
+
+      - name: Configure CMake
+        run: |
+          cmake -B build \
+                -G Ninja \
+                -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+                -DCMAKE_CXX_STANDARD=23 \
+                -DCMAKE_CXX_STANDARD_REQUIRED=ON
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.build_type }} --parallel
+
+      - name: Upload binary (optional)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pendulum-${{ matrix.os }}-${{ matrix.build_type }}
+          path: build/bin/Pendulum
+          if-no-files-found: ignore

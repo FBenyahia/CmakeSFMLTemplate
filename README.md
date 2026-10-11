@@ -11,9 +11,13 @@ To compile, the following commands can be used
 ```bash
 mkdir build
 cd build
-cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+cmake .. 
 cmake --build .
 ```
+## Execute
+Executable is located in `/build/bin/project_name`
+
+
 ## Audio
 
 Audio module is disabled by default, you can enable it by removing the following line in `CMakeLists.txt`

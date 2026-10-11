@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28.0)
-project(Pendulum VERSION 0.0.1
+project(Template VERSION 0.0.1
                  DESCRIPTION "SFML C++ Project template"
                  LANGUAGES CXX)
 
@@ -83,10 +83,11 @@ Add_Cxx_flags(${PROJECT_NAME})
 #########################################################################
 # Copy res directory to binary directory
 #########################################################################
-add_custom_command(
-        TARGET ${PROJECT_NAME}
-        COMMENT "Copy Res directory"
-        PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${PROJECT_NAME}>/res
-        VERBATIM)
+
+# add_custom_command(
+#         TARGET ${PROJECT_NAME}
+#         COMMENT "Copy Res directory"
+#         PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${PROJECT_NAME}>/res
+#         VERBATIM)
 
 
